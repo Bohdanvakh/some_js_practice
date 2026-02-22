@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Card</title>
+    </head>
+    <body>
+        <button onClick="
+            console.log(`Card quantity: ${cardQuantity}`);
+        ">Show quantity</button>
+        <button onClick="
+            cardQuantity += 1;
+            console.log(`Item was added. Total: ${cardQuantity}`);
+        ">Add to card</button>
+        <button onclick="
+            cardQuantity += 2;
+            console.log(`2 Item was added. Total: ${cardQuantity}`);
+        ">+2</button>
+        <button onclick="
+            cardQuantity += 5;
+            console.log(`5 Item was added. Total: ${cardQuantity}`);
+        ">+5</button>
+        <button onclick="
+            cardQuantity = 0;
+            console.log(`Item was removed. Total: ${cardQuantity}`);
+        ">Reset</button>
+
+        <script>
+            let cardQuantity = 0;
+        </script>
+    </body>
+</html>
