@@ -8,24 +8,40 @@
             console.log(`Card quantity: ${cardQuantity}`);
         ">Show quantity</button>
         <button onClick="
-            cardQuantity += 1;
-            console.log(`Item was added. Total: ${cardQuantity}`);
+            addQuantity(1);
         ">Add to card</button>
         <button onclick="
-            cardQuantity += 2;
-            console.log(`2 Item was added. Total: ${cardQuantity}`);
+            addQuantity(2);
         ">+2</button>
         <button onclick="
-            cardQuantity += 5;
-            console.log(`5 Item was added. Total: ${cardQuantity}`);
+            addQuantity(5);
         ">+5</button>
         <button onclick="
-            cardQuantity = 0;
-            console.log(`Item was removed. Total: ${cardQuantity}`);
+            resetQuantity();
         ">Reset</button>
 
         <script>
             let cardQuantity = 0;
+
+            function addQuantity(number) {
+                if (cardQuantity + number > 25) {
+                    alert('The cart is full!');
+                    return;
+                }
+
+                cardQuantity += number;
+
+                if (number === 1) {
+                    console.log(`Item was added. Total: ${cardQuantity}`);
+                } else if (number > 1) {
+                    console.log(`${number} items ware added. Total: ${cardQuantity}`);
+                }
+            }
+
+            function resetQuantity() {
+                cardQuantity = 0;
+                console.log(`Item was removed. Total: ${cardQuantity}`);
+            }
         </script>
     </body>
 </html>
