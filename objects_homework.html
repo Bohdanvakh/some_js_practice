@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects Homework</title>
+    </head>
+    <body>
+        <script>
+            const product = {
+                name: 'basketball',
+                price: 2095
+            };
+
+            console.log(product);
+
+            product.price += 500;
+
+            console.log(product);
+
+            product['delivery-time'] = '3 days';
+
+            console.log(product);
+
+            function comparePrice(product1, product2) {
+                const { name: name1, price: price1 } = product1;
+                const { name: name2, price: price2 } = product2;
+
+                if (price1 > price2) {
+                    console.log(`Better take this product: ${name1}`);
+                } else if (price1 < price2) {
+                    console.log(`Better take this product: ${name2}`);
+                } else {
+                    console.log('it looks like something went wrong((');
+                }
+            }
+
+            const powerbank1 = {
+                name: 'Павербанк 1',
+                price: 2110
+            };
+
+            const powerbank2 = {
+                name: 'Павербанк 2',
+                price: 2010
+            };
+
+            const powerbank3 = {
+                name: 'павербанк 3'
+            }
+
+            comparePrice(powerbank1, powerbank2);
+            comparePrice(powerbank1, powerbank3);
+
+            function isSameProduct(prod1, prod2) {
+                const { name: name1, price: price1 } = prod1;
+                const { name: name2, price: price2 } = prod2;
+
+                if (name1 === name2 && price1 === price2) {
+                    console.log('the products is the same.');
+                } else {
+                    console.log('the products are not the same.');
+                }
+            }
+
+            const product1 = {
+                name: 'Мікроскоп',
+                price: 12000
+            };
+
+            const product2 = {
+                name: 'Антена',
+                price: 12300
+            };
+
+            const product3 = {
+                name: 'Мікроскоп',
+                price: 12000
+            };
+
+            isSameProduct(product1, product2);
+            isSameProduct(product1, product3);
+
+            console.log('Good Morning!'.toLowerCase());
+        </script>
+    </body>
+</html>
