@@ -4,43 +4,34 @@
         <title>Card</title>
     </head>
     <body>
-        <button onClick="
-            console.log(`Card quantity: ${cardQuantity}`);
-        ">Show quantity</button>
-        <button onClick="
-            addQuantity(1);
-        ">Add to card</button>
-        <button onclick="
-            addQuantity(2);
-        ">+2</button>
-        <button onclick="
-            addQuantity(5);
-        ">+5</button>
-        <button onclick="
-            resetQuantity();
-        ">Reset</button>
+        <button onClick="console.log(`Card quantity: ${localStorage.getItem('quantity')}`);">Show quantity</button>
+        <button onClick="addQuantity(1);">Add to card</button>
+        <button onclick="addQuantity(2);">+2</button>
+        <button onclick="addQuantity(5);">+5</button>
+        <button onclick="resetQuantity();">Reset</button>
 
         <script>
-            let cardQuantity = 0;
-
             function addQuantity(number) {
-                if (cardQuantity + number > 25) {
+                let currentQuantity = Number(localStorage.getItem('quantity')) || 0;
+
+                if (currentQuantity + number > 25) {
                     alert('The cart is full!');
                     return;
                 }
 
-                cardQuantity += number;
+                let newQuantity = currentQuantity + number;
+                localStorage.setItem('quantity', newQuantity);
 
                 if (number === 1) {
-                    console.log(`Item was added. Total: ${cardQuantity}`);
+                    console.log(`Item was added. Total: ${newQuantity}`);
                 } else if (number > 1) {
-                    console.log(`${number} items ware added. Total: ${cardQuantity}`);
+                    console.log(`${number} items ware added. Total: ${newQuantity}`);
                 }
             }
 
             function resetQuantity() {
-                cardQuantity = 0;
-                console.log(`Item was removed. Total: ${cardQuantity}`);
+                localStorage.setItem('quantity', 0);
+                console.log(`Item was removed. Total: 0`);
             }
         </script>
     </body>
