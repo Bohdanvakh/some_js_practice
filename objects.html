@@ -21,6 +21,27 @@
             product.newValue = 'value';
 
             console.log(product);
+
+            const product2 = {
+                name: 'product2',
+                age: 12,
+                'delivery-time': '12 days',
+                rating: {
+                    stars: 4.3,
+                    count: 87
+                },
+
+                fun: function function1() {
+                    console.log('this string is inside the object.');
+                }
+            };
+
+            console.log(product2.name);
+            console.log(product2['name']);
+            console.log(product2['delivery-time']);
+            // console.log(product2.delivery-time); // this code will return error;
+            console.log(product2.rating.count);
+            product2.fun();
         </script>
     </body>
 </html>
