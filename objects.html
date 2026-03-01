@@ -48,6 +48,47 @@
             const jsonString = JSON.stringify(product2);
 
             console.log(JSON.parse(jsonString));
+
+            console.log('hello'.length);
+            console.log('hello'.toUpperCase());
+
+            const obj1 = {
+                message: 'hello'
+            };
+
+            const obj2 = obj1;
+
+            obj1.message = 'Good Job!';
+
+            console.log(obj1);
+            console.log(obj2);
+
+            const obj3 = {
+                messsage: 'Good Job!'
+            };
+
+            console.log(obj3 === obj1);
+            console.log(obj2 === obj1); // >> true (because the objects have the same reference)
+
+            const object4 = {
+                message: 'Hello World!',
+                price: 7.99
+            };
+            const { message, price } = object4;
+
+            console.log(message);
+            console.log(price);
+
+            const obj5 = {
+                // message: message,
+                message,
+                method() {
+                    console.log('method');
+                }
+            };
+
+            console.log(obj5);
+            obj5.method();
         </script>
     </body>
 </html>
