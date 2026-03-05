@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Homework</title>
+    </head>
+    <body>
+        <button class="button-9a" onclick="showButton()">9a</button>
+        <button class="button-9b" onclick="buttonUpdate()">9b</button>
+
+        <p>Next task:</p>
+
+        <button class="button-heads" onclick="showSelect(innerHTML)">Heads</button>
+        <button class="button-tails" onclick="showSelect(innerHTML)">Tails</button>
+        <p class="select"></p>
+
+        <p>Next task:</p>
+
+        <input class="input" placeholder="Name">
+        <button class="submit-button" onclick="getName();">Submit</button>
+        <p class="name-result"></p>
+
+        <script>
+            function showButton() {
+                console.log(document.querySelector('.button-9a'));
+            }
+
+            function buttonUpdate() {
+                let buttonElement = document.querySelector('.button-9b');
+
+                buttonElement.innerHTML = '9b done!';
+            }
+
+            function showSelect(value) {
+                let selectElement = document.querySelector('.select');
+
+                selectElement.innerHTML = `You chose: ${value}`;
+            }
+
+            function getName() {
+                let inputElement = document.querySelector('.input');
+                let nameText = document.querySelector('.name-result');
+
+                nameText.innerHTML = `Your name is ${inputElement.value}`;
+            }
+        </script>
+    </body>
+</html>
