@@ -5,10 +5,33 @@
     </head>
     <body>
         <p>Amazon shipping Calculator</p>
-        <input placeholder="Cost of order">
-        <button class="">Calculate</button>
+        <input class="js-cost-input" placeholder="Cost of order" onkeydown="
+            handleCostKeyDows(event);
+        ">
+        <button onclick="
+            calculateTotal();
+        ">Calculate</button>
+        <p class="js-total-cost"></p>
         <script>
-            
+            function handleCostKeyDows(event) {
+                console.log(event.key);
+
+                if (event.key === 'Enter') {
+                    calculateTotal();
+                }
+            }
+
+            function calculateTotal() {
+                const inputElement = document.querySelector(".js-cost-input");
+                let cost = Number(inputElement.value);
+
+                if (cost < 40) {
+                    cost += 10;
+                }
+
+                const totalCostElement = document.querySelector('.js-total-cost');
+                totalCostElement.innerHTML = `$${cost}`;
+            }
         </script>
     </body>
 </html>
