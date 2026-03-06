@@ -4,7 +4,7 @@
         <title>DOM Homework</title>
     </head>
     <body>
-        <button class="button-9a" onclick="showButton()">9a</button>
+        <button class="button-9a" onkeydown="returnButtonText(value)">9a</button>
         <button class="button-9b" onclick="buttonUpdate()">9b</button>
 
         <p>Next task:</p>
@@ -15,7 +15,7 @@
 
         <p>Next task:</p>
 
-        <input class="input" placeholder="Name">
+        <input class="input" placeholder="Name" oninput="returnButtonText(value)">
         <button class="submit-button" onclick="getName();">Submit</button>
         <p class="name-result"></p>
 
@@ -41,6 +41,14 @@
                 let nameText = document.querySelector('.name-result');
 
                 nameText.innerHTML = `Your name is ${inputElement.value}`;
+            }
+
+            function returnButtonText(value) {
+                let inputValue = document.querySelector('.input').value;
+                let buttonElement = document.querySelector('.button-9a');
+
+                console.log(value)
+                buttonElement.innerHTML = value;
             }
         </script>
     </body>
