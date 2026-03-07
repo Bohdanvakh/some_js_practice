@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays and loops tasks</title>
+    </head>
+    <body>
+        <script>
+            const lorem = [0, 10, 15, 22];
+            const ipsum = ['Hi', 'Hello', 'Random', 'Words'];
+
+            function getLastValue(array) {
+                console.log(array[array.length - 1])
+            }
+
+            getLastValue(lorem);
+            getLastValue(ipsum);
+
+            function arraySwap(array) {
+                let arrayFirstValue = array[0];
+                let arrayLastValue = array[array.length - 1];
+
+                let newArrayFirstValue = array[0] = arrayLastValue;
+                let newArrayLastValue = array[array.length - 1] = arrayFirstValue;
+
+                console.log(array);
+            }
+
+            arraySwap(lorem);
+            arraySwap(ipsum);
+
+            const nums = [-3, 10, 15, 2, 109];
+
+            function minMax(array) {
+                
+            }
+        </script>
+    </body>
+</html>
