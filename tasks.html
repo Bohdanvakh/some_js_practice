@@ -52,6 +52,26 @@
 
             console.log(minMax(nums));
             console.log(minMax([]));
+
+            const words = ['apple', 'apple', 'orange', 'apple', 'banana', 'orange']
+
+            function countWords(words) {
+                const result = {}
+
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+
+                    if (result[word]) {
+                        result[word] += 1;
+                    } else {
+                        result[word] = 1;
+                    }
+                }
+
+                console.log(result);
+            }
+
+            countWords(words);
         </script>
     </body>
 </html>
