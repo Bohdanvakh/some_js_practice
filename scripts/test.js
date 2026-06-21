@@ -106,3 +106,42 @@ const sum = myReduce(arr, function(accumulator, current) {
 }, 20);
 
 console.log(sum); // 720
+
+// 8 task
+function delayedGreeting(name, callback) {
+    setTimeout(() => {
+        callback(`Hello ${name}`);
+    }, 5000)
+}
+
+delayedGreeting("Bohdan", (message) => {
+    console.log(message);
+})
+
+// 9 task
+function fetchUserData(userId, callback) {
+    setTimeout(() => {
+        const isSuccess = Math.random() > 0.3;
+
+        if (isSuccess) {
+            const user = {
+                id: 1002,
+                name: "Bohdan",
+                email: "bohdan@gmail.com"
+            }
+            callback(null, user); // виклик функції на яку посилається callback
+        } else {
+            callback(`Error finding user with id ${userId}`); // виклик функції на яку посилається callback
+        }
+    }, 1000);
+}
+
+// другий параметр кокликаної функції це callback функція яка виконується в функції fetchUserData в місцях
+// де воно викликається (рядки 132 та 134)
+fetchUserData(1002, (error, result) => {
+    if (error) {
+        console.log('сталася помилка:', error);
+    } else {
+        console.log('отримано користувача:', result);
+    }
+})
