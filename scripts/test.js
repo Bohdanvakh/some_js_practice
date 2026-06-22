@@ -136,8 +136,8 @@ function fetchUserData(userId, callback) {
     }, 1000);
 }
 
-// другий параметр кокликаної функції це callback функція яка виконується в функції fetchUserData в місцях
-// де воно викликається (рядки 132 та 134)
+// другий параметр викликаної функції це callback функція яка виконується
+// в функції fetchUserData в місцях де воно викликається (рядки 132 та 134)
 fetchUserData(1002, (error, result) => {
     if (error) {
         console.log('сталася помилка:', error);
@@ -145,3 +145,48 @@ fetchUserData(1002, (error, result) => {
         console.log('отримано користувача:', result);
     }
 })
+
+// example with class
+class UserComponent {
+    constructor() {
+        this.users = [];
+    }
+
+    loadUser(id) {
+        fetchUserData(id, function(error, result) {
+            this.users.push(result)
+        });
+
+        fetchUserData(id, (error, result) => {
+            this.users.push(result);
+        });
+    }
+}
+
+// practise
+const newArray2 = [12, 33, 55, 66, 77, 90];
+
+function myReturnDouble(arr, callback) {
+    const hasNonNumber = arr.some(i => typeof i !== "number");
+
+    if(hasNonNumber) {
+        callback('Error: array has non number values');
+        return;
+    }
+
+    const newArray = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        newArray.push(arr[i] * 2);
+    }
+
+    callback(newArray);
+}
+
+myReturnDouble(newArray2, (error, result) => {
+    if(error) {
+        console.log(error);
+    } else {
+        console.log(`Result: ${result}`);
+    }
+});
