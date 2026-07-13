@@ -47,3 +47,28 @@ function watchPromises() {
 watchPromises()
     .then((message) => console.log(message))
     .catch((error) => console.log(error));
+
+// promises to resolve in one .then
+
+const resolveTaskOne = new Promise((resolve, reject) => {
+    resolve("Task 1 resolved");
+});
+
+const resolveTaskTwo = new Promise((resolve, reject) => {
+    resolve("Task 2 resolved");
+});
+
+const resolveTaskThree = new Promise((resolve, reject) => {
+    resolve("Task 3 resolved");
+});
+
+const resolveTaskFour = new Promise((resolve, reject) => {
+    resolve("Task 4 resolved");
+});
+
+Promise.all([
+    resolveTaskOne,
+    resolveTaskTwo,
+    resolveTaskThree,
+    resolveTaskFour
+]).then(messages => console.log(messages));
