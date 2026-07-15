@@ -33,10 +33,10 @@ function pourIntoCup(coffeeStatus) {
 }
 
 boilWater()
-    .then(boilWaterResult => brewCoffee(boilWaterResult))
-    .then(brewCoffeeResult => pourIntoCup(brewCoffeeResult))
-    .then(pourIntoCupResult => {
-        console.log(pourIntoCupResult);
+    .then(brewCoffee)
+    .then(pourIntoCup)
+    .then(result => {
+        console.log(result);
     })
     .catch(error => {
         console.log(error);
@@ -51,10 +51,10 @@ boilWater()
 // When handling a large number of Promises, especially in batch processing, using this 
 // function can strain the system's memory.
 
-import { setTimeout as dalay } from 'node:timers/promises';
+import { setTimeout as delay } from 'node:timers/promises';
 
-const fetchData1 = dalay(10000).then(() => 'data from API 1');
-const fetchData2 = dalay(14000).then(() => 'data from API 2');
+const fetchData1 = delay(10000).then(() => 'data from API 1');
+const fetchData2 = delay(14000).then(() => 'data from API 2');
 
 Promise.all([fetchData1, fetchData2])
     .then(results => console.log(results))
