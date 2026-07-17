@@ -1,3 +1,5 @@
+import fs from 'node:fs/promises'
+
 const usersUrl = `https://api.github.com/users`;
 
 async function getUsers() {
@@ -31,12 +33,24 @@ async function getUserFollowers(userId) {
     return userFollowers;
 }
 
+async function saveToJson(data, filename) {
+    const jsonString = JSON.stringify(data, null, 2);
+
+    await fs.writeFile(filename, jsonString);
+    
+    console.log(`Saved in the file ${filename}`);
+}
+
 async function getData(userId) {
     try {
         const user = await getUser(userId);
         const userFollowers = await getUserFollowers(user.login);
 
-        console.log(userFollowers);
+        const logins = userFollowers.map(follower => follower.login);
+
+        console.log(logins);
+
+        await saveToJson(logins, 'followers.json');
     } catch (error) {
         console.log(error);
     }
