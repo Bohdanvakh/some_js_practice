@@ -1,3 +1,6 @@
+// Це список полів з їх типами, який каже: "об'єкт такої
+// форми повинен мати саме ці поля саме такого типу".
+
 function printLabel(labelObj: { label: string }) {
     console.log(labelObj.label);
 }
