@@ -1,8 +1,8 @@
 // ENUMS
 
-type Status = "active" | "open" | "closed";
+type Statuses = "active" | "open" | "closed";
 
-function getStatus(status: Status):string {
+function getStatus(status: Statuses):string {
     return `Status: ${status}`;
 }
 
@@ -15,4 +15,23 @@ const obj = { status: "active" };
 const obj2 = { status: "active" } as const;
 
 console.log(getStatus(obj2.status)); // print "active";
+
+// case with statuses:
+
+const Status = {
+    Idle: "idle",
+    Loading: "loading",
+    Success: "success",
+    Error: "error"
+} as const;
+
+type Status = typeof Status[keyof typeof Status];
+
+function render(status: Status) {
+    switch(status) {
+        case "loading": return "...";
+        case "succes": return "done"; // typo that we see before compiling code
+        case "error": return "error";
+    }
+}
 
