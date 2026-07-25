@@ -41,3 +41,15 @@ function createSquare(config: SquareConfig): { color: string; area: number } {
 let mySquare = createSquare({color: "black", width: 24});
 
 console.log(mySquare);
+
+interface Point {
+    x: number;
+    y: number;
+};
+
+function printCoords(pt: Point) {
+    console.log(`X coordinates: ${pt.x}`);
+    console.log(`Y coordinates: ${pt.y}`);
+}
+
+printCoords({x: 10, y: 100});
