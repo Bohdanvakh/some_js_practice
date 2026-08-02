@@ -98,3 +98,30 @@ function indentGen<Type>(agr: Type):Type {
 const output = indentGen<string>("Lorem ipsum"); // const output: string
 const output2 = indentGen("Lorem Ipsum");        // const output2: "Lorem Ipsum"
 
+// GENERIC TYPES
+
+function identityOneMoreTime<T>(arg: T): T {
+    return arg;
+}
+
+let myValue: <T>(arg: T) => T = identityOneMoreTime;
+let mySecindValue: { <T>(arg: T): T } = identityOneMoreTime;
+
+// Let’s take the object literal from the previous example and move it to an interface:
+interface GenericIdentityFn {
+    <Type>(arg: Type): Type;
+}
+
+function identGetType<Type>(arg: Type): Type {
+    return arg;
+}
+
+let myIdentity: GenericIdentityFn = identGetType;
+
+let myArg = myIdentity<string>("Lorem"); // let myArg: string
+let myArg2 = myIdentity<number>(129); // let myArg2: number
+
+// function generics
+function getSth<T>(arg: T): T {
+    return arg;
+}
