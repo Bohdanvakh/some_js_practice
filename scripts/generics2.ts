@@ -37,3 +37,39 @@ const swap2 = swap(["44", 44]); // Type is [number, string]
 
 console.log(swapResult);
 console.log(swap2);
+
+// Generic Interfaces
+// Generic interface for a data repository
+
+interface Repository<T> {
+    findById(id: string): Promise<T>;
+    save(item: T): Promise<void>;
+    delete(id: string): Promise<void>;
+    findAll(): Promise<T[]>;
+}
+
+// Implementation for specific type
+interface User {
+    id: string;
+    name: string;
+    email: string;
+}
+
+class UserRepository implements Repository<User> {
+    async findById(id: string): Promise<User> {
+        return {} as User;
+    }
+
+    async save(user: User): Promise<void> {
+        return
+    }
+
+    async delete(id: string): Promise<void> {
+        return
+    }
+
+    async findAll(): Promise<User[]> {
+        // Implementation here
+        return [];
+    }
+}
