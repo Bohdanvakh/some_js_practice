@@ -73,3 +73,35 @@ class UserRepository implements Repository<User> {
         return [];
     }
 }
+
+// Generic Classes
+
+class Queue<T> {
+    private data: T[] = [];
+
+    push(item: T): void {
+        this.data.push(item);
+    }
+
+    pop(): T | undefined {
+        return this.data.shift();
+    }
+
+    peek(): T | undefined {
+        return this.data[0];
+    }
+}
+
+// Usage
+const queue = new Queue<number>();
+queue.push(19); // OK because of number argument
+// queue.push("10"); // Argument of type 'string' is not assignable to parameter of type 'number'
+
+// Advanced Generic Concepts
+interface HasLength {
+    length: number;
+}
+
+function logLength<T extends HasLength>(item: T): void {
+    
+}
