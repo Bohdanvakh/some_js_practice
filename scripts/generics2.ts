@@ -103,5 +103,13 @@ interface HasLength {
 }
 
 function logLength<T extends HasLength>(item: T): void {
-    
+    console.log(item.length);
 }
+
+// These work because they have a length property
+logLength("Hello"); // String has length
+logLength([1, 2, 3]); // Array has length
+logLength({ length: 10 }); // Object with length property
+
+// This would error
+// logLength(123); // Error: Number doesn't have length property
