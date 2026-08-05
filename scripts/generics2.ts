@@ -113,3 +113,30 @@ logLength({ length: 10 }); // Object with length property
 
 // This would error
 // logLength(123); // Error: Number doesn't have length property
+
+// Generic Best Practices and Common Patterns
+// Factory Pattern with Generics
+
+interface Factory<T> {
+    create(): T;
+}
+
+class CarFactory implements Factory<Car> {
+    create(): Car {
+        return new Car();
+    }
+}
+
+class Car {
+    drive() {
+        console.log("Vroom!");
+    }
+}
+
+const newCar = new Car();
+
+newCar.drive();
+
+const factory = new CarFactory();
+const car = factory.create();
+car.drive();
