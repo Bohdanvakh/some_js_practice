@@ -140,3 +140,29 @@ newCar.drive();
 const factory = new CarFactory();
 const car = factory.create();
 car.drive();
+
+// Real world usage:
+// API Response wrapper
+
+interface ApiResponse<T> {
+    data: T;
+    status: number;
+    message: string;
+    timestemp: Date;
+}
+
+interface NewUser {
+    id: number;
+    name: string;
+}
+
+async function fetchData<T>(url: string): Promise<ApiResponse<T>> {
+    const response = await fetch(url);
+    return await response.json();
+}
+
+// Usage
+
+const user = await fetchData<NewUser>(`/api/user/1`);
+console.log(user.data.name); // TypeScript knows this exists!
+
