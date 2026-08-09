@@ -68,3 +68,19 @@ async function fetchUserByType(id: number): Promise<User> {
 // both approaches are equally dangerous in essence, 
 // it's just a matter of style, where 
 // exactly to place the annotation.
+
+// correct usage of promise types:
+
+import { z } from 'zod';
+
+const UserSchema = z.object({
+    id: z.number(),
+    name: z.string(),
+});
+
+async function getUserByZod(id: number): Promise<User> {
+    const response = await fetch(`api/users/${id}`);
+    const data = await response.json();
+
+    return UserSchema.parse(data); // ZodType<any, any, $ZodObjectInternals<{ id: ZodNumber; name: ZodString; }
+}
